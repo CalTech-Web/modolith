@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[55vh] min-h-[400px] flex items-end overflow-hidden">
+      <section className="relative flex h-[55vh] min-h-[400px] items-end overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
@@ -53,28 +53,28 @@ export default async function ProjectPage({ params }: Props) {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 hero-overlay" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full pb-12">
+        <div className="hero-overlay absolute inset-0" />
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12">
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 text-white/70 hover:text-accent text-sm mb-4 transition-colors"
+            className="mb-4 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-accent"
           >
-            <ArrowLeft className="w-4 h-4" /> Back to Portfolio
+            <ArrowLeft className="h-4 w-4" /> Back to Portfolio
           </Link>
-          <h1 className="text-3xl md:text-5xl font-bold text-white font-[family-name:var(--font-heading)] mb-3">
+          <h1 className="font-[family-name:var(--font-heading)] mb-3 text-3xl font-bold text-white md:text-5xl">
             {project.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-6 text-white/70 text-sm">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-white/70">
             <span className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-accent" />
+              <MapPin className="h-4 w-4 text-accent" />
               {project.location}
             </span>
             <span className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-accent" />
+              <Users className="h-4 w-4 text-accent" />
               {project.client}
             </span>
             <span className="flex items-center gap-2">
-              <Wrench className="w-4 h-4 text-accent" />
+              <Wrench className="h-4 w-4 text-accent" />
               {project.type}
             </span>
           </div>
@@ -82,93 +82,112 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       {/* Content */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* Main Content */}
-              <div className="lg:col-span-2">
-                <h2 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-dark mb-4">
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+            {/* Main Content */}
+            <div className="lg:col-span-2">
+              <ScrollReveal>
+                <h2 className="font-[family-name:var(--font-heading)] mb-4 text-2xl font-bold text-dark">
                   Project Overview
                 </h2>
                 <div className="section-divider mb-6" />
-                <p className="text-gray-600 leading-relaxed mb-8 text-lg">
+                <p className="mb-8 text-lg leading-relaxed text-gray-600">
                   {project.description}
                 </p>
-                <p className="text-gray-600 leading-relaxed mb-10">
+                <p className="mb-10 leading-relaxed text-gray-600">
                   {project.details}
                 </p>
+              </ScrollReveal>
 
-                {/* Gallery */}
-                {project.images.length > 1 && (
-                  <>
-                    <h3 className="text-xl font-bold font-[family-name:var(--font-heading)] text-dark mb-4">
-                      Project Gallery
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {project.images.map((img, i) => (
-                        <div
-                          key={i}
-                          className="relative h-64 rounded-lg overflow-hidden"
-                        >
-                          <Image
-                            src={img}
-                            alt={`${project.title} - Image ${i + 1}`}
-                            fill
-                            className="object-cover hover:scale-105 transition-transform duration-300"
-                            sizes="(max-width: 640px) 100vw, 50vw"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Sidebar */}
-              <div>
-                <div className="bg-light rounded-xl p-8 sticky top-28">
-                  <h3 className="text-lg font-bold font-[family-name:var(--font-heading)] text-dark mb-4">
-                    Scope of Work
+              {/* Gallery */}
+              {project.images.length > 1 && (
+                <ScrollReveal>
+                  <h3 className="font-[family-name:var(--font-heading)] mb-6 text-xl font-bold text-dark">
+                    Project Gallery
                   </h3>
-                  <ul className="space-y-3">
-                    {project.scope.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
-                        <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0" />
-                        {item}
-                      </li>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    {project.images.map((img, i) => (
+                      <div
+                        key={i}
+                        className={`img-zoom relative overflow-hidden rounded-lg ${
+                          i === 0 && project.images.length > 2
+                            ? "sm:col-span-2 h-80"
+                            : "h-64"
+                        }`}
+                      >
+                        <Image
+                          src={img}
+                          alt={`${project.title} - Image ${i + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes={
+                            i === 0 && project.images.length > 2
+                              ? "100vw"
+                              : "(max-width: 640px) 100vw, 50vw"
+                          }
+                        />
+                      </div>
                     ))}
-                  </ul>
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <Link
-                      href="/contact"
-                      className="w-full block text-center bg-accent text-white px-6 py-3 font-semibold rounded hover:bg-accent-dark transition-colors btn-interact"
-                    >
-                      Start Your Project
-                    </Link>
+                  </div>
+                </ScrollReveal>
+              )}
+            </div>
+
+            {/* Sidebar */}
+            <div>
+              <ScrollReveal direction="right">
+                <div className="sticky top-28 overflow-hidden rounded-xl border border-gray-100 bg-light">
+                  <div className="bg-primary p-6">
+                    <h3 className="font-[family-name:var(--font-heading)] text-lg font-bold text-white">
+                      Scope of Work
+                    </h3>
+                  </div>
+                  <div className="p-6">
+                    <ul className="space-y-3">
+                      {project.scope.map((item, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-sm text-gray-600"
+                        >
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-8 border-t border-gray-200 pt-6">
+                      <Link
+                        href="/contact"
+                        className="btn-interact block w-full rounded bg-accent px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-accent-dark"
+                      >
+                        Start Your Project
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
       {/* Prev/Next Navigation */}
-      <section className="py-12 bg-light border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center">
+      <section className="border-t border-gray-200 bg-light">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-2">
             {prev ? (
               <Link
                 href={`/portfolio/${prev.slug}`}
-                className="flex items-center gap-3 text-dark hover:text-accent transition-colors group"
+                className="group flex items-center gap-4 border-r border-gray-200 py-8 pr-6 transition-colors hover:bg-white"
               >
-                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">
+                <ArrowLeft className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-hover:-translate-x-1 group-hover:text-accent" />
+                <div className="min-w-0">
+                  <p className="text-xs tracking-wider text-gray-400 uppercase">
                     Previous
                   </p>
-                  <p className="font-semibold text-sm">{prev.title}</p>
+                  <p className="truncate text-sm font-semibold text-dark group-hover:text-accent">
+                    {prev.title}
+                  </p>
                 </div>
               </Link>
             ) : (
@@ -177,15 +196,17 @@ export default async function ProjectPage({ params }: Props) {
             {next ? (
               <Link
                 href={`/portfolio/${next.slug}`}
-                className="flex items-center gap-3 text-dark hover:text-accent transition-colors text-right group"
+                className="group flex items-center justify-end gap-4 py-8 pl-6 text-right transition-colors hover:bg-white"
               >
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">
+                <div className="min-w-0">
+                  <p className="text-xs tracking-wider text-gray-400 uppercase">
                     Next
                   </p>
-                  <p className="font-semibold text-sm">{next.title}</p>
+                  <p className="truncate text-sm font-semibold text-dark group-hover:text-accent">
+                    {next.title}
+                  </p>
                 </div>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-hover:translate-x-1 group-hover:text-accent" />
               </Link>
             ) : (
               <div />

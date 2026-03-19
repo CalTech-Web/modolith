@@ -51,28 +51,34 @@ html {
   background: var(--color-accent);
 }
 
-/* Fade in up animation */
+/* ============ ANIMATIONS ============ */
+
+/* Fade in up */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out both;
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out both; }
+.animate-fade-in-up-delay { animation: fadeInUp 0.6s ease-out 0.2s both; }
+.animate-fade-in-up-delay-2 { animation: fadeInUp 0.6s ease-out 0.4s both; }
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.animate-fade-in-up-delay {
-  animation: fadeInUp 0.6s ease-out 0.2s both;
+/* Slide in from right */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.animate-fade-in-up-delay-2 {
-  animation: fadeInUp 0.6s ease-out 0.4s both;
+/* Scale in */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* Ken Burns zoom */
@@ -86,7 +92,55 @@ html {
   animation: kenBurns 25s ease-in-out infinite;
 }
 
-/* Scroll reveal */
+/* Marquee scroll */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-gold {
+  background: linear-gradient(90deg, var(--color-accent) 0%, #E8D08C 25%, var(--color-accent) 50%, #E8D08C 75%, var(--color-accent) 100%);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scroll indicator bounce */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.6; }
+}
+
+.animate-scroll-bounce {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ============ SCROLL REVEAL ============ */
+
+/* Default: fade up */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -96,6 +150,42 @@ html {
 .scroll-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Direction: left */
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Direction: right */
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Direction: scale */
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Stagger children */
@@ -111,6 +201,10 @@ html {
 .stagger-children.revealed > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
 .stagger-children.revealed > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
 .stagger-children.revealed > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+.stagger-children.revealed > *:nth-child(7) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
+.stagger-children.revealed > *:nth-child(8) { transition-delay: 700ms; opacity: 1; transform: translateY(0); }
+
+/* ============ UTILITIES ============ */
 
 /* Button interaction */
 .btn-interact {
@@ -126,6 +220,16 @@ html {
   transform: scale(0.98);
 }
 
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
 /* Section divider grow on reveal */
 .scroll-reveal .section-divider {
   transform: scaleX(0);
@@ -139,9 +243,67 @@ html {
 /* Gold gradient text */
 .gold-gradient-text {
   background: linear-gradient(135deg, #C8A350, #E8D08C, #C8A350);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Image hover zoom */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.5s ease-out;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* Gold top border accent on hover */
+.gold-border-top {
+  border-top: 3px solid transparent;
+  transition: border-color 0.3s ease-out;
+}
+
+.gold-border-top:hover {
+  border-color: var(--color-accent);
+}
+
+/* Lightbox overlay */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Respect reduced motion */
@@ -151,7 +313,10 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .scroll-reveal { opacity: 1; transform: none; }
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-reveal-scale { opacity: 1; transform: none; }
   .stagger-children > * { opacity: 1; transform: none; }
   .scroll-reveal .section-divider { transform: scaleX(1); }
 }

@@ -2,9 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
+import CounterSection from "@/components/CounterSection";
+import VideoSection from "@/components/VideoSection";
+import PartnerMarquee from "@/components/PartnerMarquee";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
-import { ArrowRight, Shield, Target, Clock, Award } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronDown,
+  Hammer,
+  Building2,
+  HardHat,
+  ClipboardCheck,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Modolith Structures | Houston General Contractor",
@@ -12,76 +22,84 @@ export const metadata: Metadata = {
     "Standing Structures. Setting Standards. Expert structural steel erection, pre-engineered metal buildings, general contracting, and construction consulting in Houston, TX.",
 };
 
-const partners = [
-  { name: "Metco Engineering", url: "https://www.metcoengineering.com/" },
-  { name: "Zachry Group", url: "https://zachrygroup.com/" },
-  { name: "Varco Pruden", url: "https://varcopruden.com/" },
-  { name: "Brazosport College", url: "https://www.brazosport.edu/" },
-  { name: "Americus Holdings", url: "https://www.americusholdings.com/" },
-  { name: "Advon Construction", url: "https://advonconstruction.com/" },
-  { name: "SSP Engineering", url: "https://sspeng.com/" },
-  { name: "BP", url: "https://www.bp.com/" },
-];
+const serviceIcons = [Hammer, Building2, HardHat, ClipboardCheck];
 
 export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative flex h-screen min-h-[600px] items-center overflow-hidden">
         <Image
           src="/images/projects/fort-bend-skills-tower/DJI_0445.jpg"
           alt="Modolith Structures - Steel Construction"
           fill
-          className="object-cover animate-ken-burns"
+          className="animate-ken-burns object-cover"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 hero-overlay" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
+        <div className="hero-overlay absolute inset-0" />
+
+        {/* Geometric accent lines */}
+        <div className="absolute top-20 left-8 z-10 hidden lg:block">
+          <div className="h-24 w-px bg-accent/40" />
+          <div className="mt-1 h-px w-24 bg-accent/40" />
+        </div>
+        <div className="absolute right-8 bottom-32 z-10 hidden lg:block">
+          <div className="ml-auto h-px w-24 bg-accent/40" />
+          <div className="ml-auto mt-1 h-24 w-px bg-accent/40" />
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
           <div className="max-w-3xl">
-            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-4 animate-fade-in-up">
+            <p className="animate-fade-in-up mb-4 text-sm font-semibold tracking-widest text-accent uppercase">
               Design. Build. Inspire.
             </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white font-[family-name:var(--font-heading)] leading-tight mb-6 animate-fade-in-up-delay">
+            <h1 className="font-[family-name:var(--font-heading)] animate-fade-in-up-delay mb-6 text-5xl leading-tight font-bold text-white md:text-6xl lg:text-7xl">
               Standing Structures.
               <br />
               <span className="gold-gradient-text">Setting Standards.</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-xl animate-fade-in-up-delay-2">
+            <p className="animate-fade-in-up-delay-2 mb-10 max-w-xl text-lg text-white/80 md:text-xl">
               Expert structural steel erection, pre-engineered metal buildings,
               general contracting, and construction consulting in Houston, TX.
             </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in-up-delay-2">
+            <div className="animate-fade-in-up-delay-2 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="bg-accent text-white px-8 py-4 font-semibold rounded hover:bg-accent-dark transition-colors btn-interact"
+                className="btn-interact group inline-flex items-center gap-2 rounded bg-accent px-8 py-4 font-semibold text-white transition-colors hover:bg-accent-dark"
               >
                 Get a Quote
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/portfolio"
-                className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 font-semibold rounded border border-white/20 hover:bg-white/20 transition-colors"
+                className="rounded border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/20"
               >
                 View Our Work
               </Link>
             </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="animate-scroll-bounce absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
+          <ChevronDown className="h-6 w-6 text-white/50" />
+        </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+            <div className="mb-16 text-center">
+              <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                 What We Do
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark mb-4">
+              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-3xl font-bold text-dark md:text-4xl">
                 Our Services
               </h2>
               <div className="section-divider mx-auto mb-6" />
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="mx-auto max-w-2xl text-gray-600">
                 At Modolith, we do more than construct buildings - we create
                 trust and deliver excellence.
               </p>
@@ -89,206 +107,142 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal stagger>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={`/services#${service.slug}`}
-                  className="group bg-light rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="relative h-52 overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold font-[family-name:var(--font-heading)] text-dark mb-2 group-hover:text-accent transition-colors">
-                      {service.shortTitle}
-                    </h3>
-                    <p className="text-gray-600 text-sm line-clamp-3">
-                      {service.description.split(".")[0]}.
-                    </p>
-                    <span className="inline-flex items-center gap-1 text-accent text-sm font-semibold mt-4 group-hover:gap-2 transition-all">
-                      Learn More <ArrowRight className="w-4 h-4" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {services.map((service, idx) => {
+                const Icon = serviceIcons[idx];
+                return (
+                  <Link
+                    key={service.slug}
+                    href={`/services#${service.slug}`}
+                    className="card-hover gold-border-top group overflow-hidden rounded-xl bg-light"
+                  >
+                    <div className="img-zoom relative h-52">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                        <Icon className="h-5 w-5 text-accent" />
+                      </div>
+                      <h3 className="font-[family-name:var(--font-heading)] mb-2 text-lg font-bold text-dark transition-colors group-hover:text-accent">
+                        {service.shortTitle}
+                      </h3>
+                      <p className="line-clamp-3 text-sm text-gray-600">
+                        {service.description.split(".")[0]}.
+                      </p>
+                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-all group-hover:gap-2">
+                        Learn More <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* About Preview */}
-      <section className="py-24 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
-                  About Modolith
-                </p>
-                <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-heading)] mb-6">
-                  Built to Last.
-                  <br />
-                  Designed to Lead.
-                </h2>
-                <div className="section-divider mb-8" />
-                <p className="text-white/75 leading-relaxed mb-6">
-                  At Modolith, we view construction as more than building - it&apos;s
-                  about creating lasting value. We are committed to quality,
-                  safety, and innovation, delivering robust structural solutions
-                  that redefine what&apos;s achievable.
-                </p>
-                <p className="text-white/75 leading-relaxed mb-8">
-                  Founded in 2021 as a construction consulting firm specializing
-                  in risk management and quality control, we expanded in 2023 to
-                  include self-performing structural steel and metal building
-                  capabilities.
-                </p>
-                <div className="grid grid-cols-2 gap-6 mb-8">
-                  <div className="flex items-start gap-3">
-                    <Shield className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Safety First</p>
-                      <p className="text-white/50 text-sm">Rigorous protocols</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Precision</p>
-                      <p className="text-white/50 text-sm">Expert execution</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">On-Time</p>
-                      <p className="text-white/50 text-sm">Reliable delivery</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Award className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Quality</p>
-                      <p className="text-white/50 text-sm">Exceeding standards</p>
-                    </div>
-                  </div>
-                </div>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 bg-accent text-white px-7 py-3.5 font-semibold rounded hover:bg-accent-dark transition-colors btn-interact"
-                >
-                  About Us <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-              <div className="relative">
-                <div className="relative h-[500px] rounded-xl overflow-hidden">
-                  <Image
-                    src="/images/services/Modolith-Image-108.jpg"
-                    alt="Modolith - Structural Steel"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -left-6 bg-accent text-white p-6 rounded-xl shadow-xl">
-                  <p className="text-3xl font-bold font-[family-name:var(--font-heading)]">5+</p>
-                  <p className="text-sm text-white/80">Years of Excellence</p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* Counter Stats Section */}
+      <CounterSection />
+
+      {/* Video Section */}
+      <VideoSection />
 
       {/* Portfolio Preview */}
-      <section className="py-24 bg-light">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="bg-light py-24">
+        <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+            <div className="mb-16 text-center">
+              <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                 Our Work
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-heading)] text-dark mb-4">
+              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-3xl font-bold text-dark md:text-4xl">
                 Delivering Excellence Across Every Build
               </h2>
               <div className="section-divider mx-auto" />
             </div>
           </ScrollReveal>
 
-          <ScrollReveal stagger>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.slice(0, 6).map((project) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {projects.slice(0, 6).map((project, i) => (
+              <ScrollReveal key={project.slug} direction="scale">
                 <Link
-                  key={project.slug}
                   href={`/portfolio/${project.slug}`}
-                  className="group relative h-72 rounded-xl overflow-hidden"
+                  className="img-zoom group relative block h-72 overflow-hidden rounded-xl"
+                  style={{ animationDelay: `${i * 80}ms` }}
                 >
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <p className="text-accent text-xs font-semibold tracking-wider uppercase mb-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="rounded-full bg-accent/90 px-5 py-2 text-xs font-semibold tracking-wide text-white uppercase">
+                      View Project
+                    </span>
+                  </div>
+                  <div className="absolute right-0 bottom-0 left-0 p-6">
+                    <span className="mb-2 inline-block rounded-full bg-accent/20 px-3 py-0.5 text-xs font-semibold tracking-wider text-accent uppercase backdrop-blur-sm">
                       {project.type}
-                    </p>
-                    <h3 className="text-white font-bold text-lg font-[family-name:var(--font-heading)]">
+                    </span>
+                    <h3 className="font-[family-name:var(--font-heading)] text-lg font-bold text-white">
                       {project.title}
                     </h3>
-                    <p className="text-white/60 text-sm">{project.location}</p>
+                    <p className="text-sm text-white/60">{project.location}</p>
                   </div>
                 </Link>
-              ))}
-            </div>
-          </ScrollReveal>
+              </ScrollReveal>
+            ))}
+          </div>
 
-          <div className="text-center mt-12">
+          <div className="mt-12 text-center">
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 font-semibold rounded hover:bg-primary-light transition-colors btn-interact"
+              className="btn-interact group inline-flex items-center gap-2 rounded bg-primary px-8 py-3.5 font-semibold text-white transition-colors hover:bg-primary-light"
             >
-              View All Projects <ArrowRight className="w-4 h-4" />
+              View All Projects
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="py-16 bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Partners Marquee */}
+      <PartnerMarquee />
+
+      {/* Brand Quote */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-4xl px-6 text-center">
           <ScrollReveal>
-            <p className="text-center text-sm text-gray-500 font-semibold tracking-widest uppercase mb-10">
-              Trusted By Industry Leaders
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-              {partners.map((partner) => (
-                <a
-                  key={partner.name}
-                  href={partner.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-accent transition-colors text-sm font-bold tracking-wider uppercase"
-                >
-                  {partner.name}
-                </a>
-              ))}
+            <div className="relative">
+              <span className="font-[family-name:var(--font-heading)] absolute -top-6 -left-2 text-6xl leading-none text-accent/20 md:-top-8 md:-left-6 md:text-8xl">
+                &ldquo;
+              </span>
+              <blockquote className="font-[family-name:var(--font-heading)] relative z-10 text-2xl leading-relaxed font-medium text-primary italic md:text-3xl lg:text-4xl">
+                Built to Last. Designed to Lead.
+              </blockquote>
+              <span className="font-[family-name:var(--font-heading)] absolute -right-2 -bottom-10 text-6xl leading-none text-accent/20 md:-right-6 md:-bottom-12 md:text-8xl">
+                &rdquo;
+              </span>
             </div>
+            <div className="section-divider mx-auto mt-10" />
+            <p className="mt-6 text-sm tracking-widest text-gray-400 uppercase">
+              Modolith Structures
+            </p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative overflow-hidden py-24">
         <Image
           src="/images/services/Modolith-Image-106-1024x576.jpg"
           alt="Construction"
@@ -296,24 +250,27 @@ export default function Home() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 hero-overlay" />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center text-white">
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
-            Strategic. Reliable. Built to Perform.
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-heading)] mb-6">
-            Let&apos;s Build Something That Lasts
-          </h2>
-          <p className="text-white/75 mb-10 text-lg">
-            Whether you&apos;re planning a complex steel structure or seeking
-            expert guidance for your next project, Modolith is here to deliver.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-accent text-white px-10 py-4 font-semibold rounded text-lg hover:bg-accent-dark transition-colors btn-interact"
-          >
-            Contact Us
-          </Link>
+        <div className="hero-overlay absolute inset-0" />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
+          <ScrollReveal>
+            <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
+              Strategic. Reliable. Built to Perform.
+            </p>
+            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-3xl font-bold md:text-4xl">
+              Let&apos;s Build Something That Lasts
+            </h2>
+            <p className="mb-10 text-lg text-white/75">
+              Whether you&apos;re planning a complex steel structure or seeking
+              expert guidance for your next project, Modolith is here to deliver.
+            </p>
+            <Link
+              href="/contact"
+              className="btn-interact group inline-flex items-center gap-2 rounded border-2 border-accent bg-accent px-10 py-4 text-lg font-semibold text-white transition-all hover:bg-accent-dark hover:border-accent-dark"
+            >
+              Contact Us
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
     </>

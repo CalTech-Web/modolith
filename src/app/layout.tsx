@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -118,10 +119,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${montserrat.variable} antialiased`}
+      >
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   );

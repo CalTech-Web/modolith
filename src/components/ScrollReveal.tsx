@@ -6,12 +6,14 @@ interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
   stagger?: boolean;
+  direction?: "up" | "left" | "right" | "scale";
 }
 
 export default function ScrollReveal({
   children,
   className = "",
   stagger = false,
+  direction = "up",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -33,10 +35,19 @@ export default function ScrollReveal({
     return () => observer.disconnect();
   }, []);
 
+  const dirClass =
+    direction === "left"
+      ? "scroll-reveal-left"
+      : direction === "right"
+        ? "scroll-reveal-right"
+        : direction === "scale"
+          ? "scroll-reveal-scale"
+          : "scroll-reveal";
+
   return (
     <div
       ref={ref}
-      className={`scroll-reveal ${stagger ? "stagger-children" : ""} ${className}`}
+      className={`${dirClass} ${stagger ? "stagger-children" : ""} ${className}`}
     >
       {children}
     </div>

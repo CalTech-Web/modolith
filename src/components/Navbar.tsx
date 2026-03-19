@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
@@ -12,10 +13,22 @@ const navLinks = [
     href: "/services",
     label: "Services",
     children: [
-      { href: "/services#structural-steel-erection", label: "Structural Steel Erection" },
-      { href: "/services#pre-engineered-metal-buildings", label: "Pre-Engineered Metal Buildings" },
-      { href: "/services#general-contracting", label: "General Contracting" },
-      { href: "/services#construction-consulting", label: "Construction Consulting" },
+      {
+        href: "/services#structural-steel-erection",
+        label: "Structural Steel Erection",
+      },
+      {
+        href: "/services#pre-engineered-metal-buildings",
+        label: "Pre-Engineered Metal Buildings",
+      },
+      {
+        href: "/services#general-contracting",
+        label: "General Contracting",
+      },
+      {
+        href: "/services#construction-consulting",
+        label: "Construction Consulting",
+      },
     ],
   },
   { href: "/portfolio", label: "Portfolio" },
@@ -23,6 +36,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -33,16 +47,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md"
+          ? "bg-white/95 shadow-md backdrop-blur-md"
           : "bg-black/20 backdrop-blur-[2px]"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
@@ -50,7 +74,7 @@ export default function Navbar() {
               alt="Modolith Structures"
               width={140}
               height={40}
-              className={`w-auto h-9 transition-all duration-300 ${
+              className={`h-9 w-auto transition-all duration-300 ${
                 scrolled ? "" : "brightness-0 invert"
               }`}
               priority
@@ -58,57 +82,70 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) =>
               link.children ? (
                 <div
                   key={link.href}
-                  className="relative group"
+                  className="group relative"
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
                 >
                   <Link
                     href={link.href}
-                    className={`px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1 ${
-                      scrolled
-                        ? "text-gray-700 hover:text-accent"
-                        : "text-white/90 hover:text-accent"
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
+                      isActive(link.href)
+                        ? "text-accent"
+                        : scrolled
+                          ? "text-gray-700 hover:text-accent"
+                          : "text-white/90 hover:text-accent"
                     }`}
                   >
                     {link.label}
-                    <ChevronDown className="w-3.5 h-3.5" />
+                    <ChevronDown
+                      className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                    />
                   </Link>
-                  {servicesOpen && (
-                    <div className="absolute top-full left-0 bg-white shadow-xl rounded-lg py-2 min-w-[280px] border border-gray-100">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-light hover:text-accent transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <div
+                    className={`absolute top-full left-0 min-w-[280px] overflow-hidden rounded-lg border border-gray-100 bg-white shadow-xl transition-all duration-200 ${
+                      servicesOpen
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-2 opacity-0"
+                    }`}
+                  >
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block border-l-2 border-transparent px-5 py-2.5 text-sm text-gray-700 transition-all hover:border-accent hover:bg-light hover:text-accent"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 text-sm font-medium transition-colors ${
-                    scrolled
-                      ? "text-gray-700 hover:text-accent"
-                      : "text-white/90 hover:text-accent"
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive(link.href)
+                      ? "text-accent"
+                      : scrolled
+                        ? "text-gray-700 hover:text-accent"
+                        : "text-white/90 hover:text-accent"
                   }`}
                 >
                   {link.label}
+                  {isActive(link.href) && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-accent" />
+                  )}
                 </Link>
               )
             )}
             <Link
               href="/contact"
-              className="ml-4 bg-accent text-white px-6 py-2.5 text-sm font-semibold rounded hover:bg-accent-dark transition-colors btn-interact"
+              className="btn-interact ml-4 rounded bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
             >
               Get in Touch
             </Link>
@@ -117,55 +154,67 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 ${
-              scrolled ? "text-dark" : "text-white"
-            }`}
+            className={`p-2 lg:hidden ${scrolled ? "text-dark" : "text-white"}`}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl">
-          <div className="px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
-              <div key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-dark font-medium hover:bg-light rounded transition-colors"
-                >
-                  {link.label}
-                </Link>
-                {link.children && (
-                  <div className="pl-6 space-y-1">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setIsOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:text-accent transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="block mx-4 mt-3 text-center bg-accent text-white px-6 py-3 font-semibold rounded hover:bg-accent-dark transition-colors"
+      {/* Mobile Menu - slide in */}
+      <div
+        className={`overflow-hidden border-t border-gray-100 bg-white shadow-xl transition-all duration-300 lg:hidden ${
+          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="space-y-1 px-6 py-4">
+          {navLinks.map((link, i) => (
+            <div
+              key={link.href}
+              style={{ transitionDelay: isOpen ? `${i * 50}ms` : "0ms" }}
+              className={`transition-all duration-300 ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}`}
             >
-              Get in Touch
-            </Link>
-          </div>
+              <Link
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`block rounded px-4 py-3 font-medium transition-colors ${
+                  isActive(link.href)
+                    ? "bg-accent/10 text-accent"
+                    : "text-dark hover:bg-light"
+                }`}
+              >
+                {link.label}
+              </Link>
+              {link.children && (
+                <div className="space-y-1 pl-6">
+                  {link.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-600 transition-colors hover:text-accent"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+          <Link
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+            className="mx-4 mt-3 block rounded bg-accent px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-accent-dark"
+          >
+            Get in Touch
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
