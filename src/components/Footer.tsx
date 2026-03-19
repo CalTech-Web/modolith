@@ -5,8 +5,8 @@ import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-primary text-white">
-      {/* Gold gradient top border */}
-      <div className="shimmer-gold h-1" />
+      {/* Gold top border */}
+      <div className="h-1 bg-accent" />
 
       {/* CTA Section */}
       <div className="border-b border-white/10">

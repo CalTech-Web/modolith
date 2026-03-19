@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
-import VideoSection from "@/components/VideoSection";
 import { services } from "@/data/services";
 import {
   ArrowRight,
@@ -60,18 +59,12 @@ export default function ServicesPage() {
         image="/images/services/Modolith-Image-106-1024x576.jpg"
       />
 
-      {/* Video Section */}
-      <VideoSection
-        headline="Precision in Action"
-        subtext="From structural steel erection to full-service general contracting, watch how our team brings expertise to every project."
-      />
-
       {/* Services */}
       {services.map((service, i) => (
         <section
           key={service.slug}
           id={service.slug}
-          className={`py-24 ${i % 2 === 0 ? "bg-white" : "bg-light"}`}
+          className={`py-24 ${i % 2 === 0 ? "bg-dark" : "bg-primary"}`}
         >
           <div className="mx-auto max-w-7xl px-6">
             <div
@@ -82,14 +75,14 @@ export default function ServicesPage() {
                   <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                     {service.shortTitle}
                   </p>
-                  <h2 className="font-[family-name:var(--font-heading)] mb-3 text-3xl font-bold text-dark md:text-4xl">
+                  <h2 className="font-[family-name:var(--font-heading)] mb-3 text-4xl font-bold text-white md:text-5xl">
                     {service.title}
                   </h2>
-                  <p className="mb-6 font-medium text-gray-500">
+                  <p className="mb-6 font-medium text-white/50">
                     {service.subtitle}
                   </p>
                   <div className="section-divider mb-8" />
-                  <p className="mb-8 leading-relaxed text-gray-600">
+                  <p className="mb-8 leading-relaxed text-white/70">
                     {service.description}
                   </p>
                   <div className="mb-8 space-y-4">
@@ -98,16 +91,16 @@ export default function ServicesPage() {
                       return (
                         <div
                           key={feature.title}
-                          className="group/feat flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-accent/5"
+                          className="group/feat flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-white/5"
                         >
                           <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10 transition-colors group-hover/feat:bg-accent/20">
                             <Icon className="h-4 w-4 text-accent" />
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-dark">
+                            <p className="text-sm font-semibold text-white">
                               {feature.title}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-white/60">
                               {feature.description}
                             </p>
                           </div>
@@ -151,7 +144,7 @@ export default function ServicesPage() {
             <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
               Let&apos;s Build Together
             </p>
-            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-3xl font-bold md:text-4xl">
+            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold md:text-5xl">
               Every Great Structure Begins with a Conversation
             </h2>
             <p className="mb-10 text-white/70">

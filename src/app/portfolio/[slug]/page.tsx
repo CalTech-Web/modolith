@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: Props) {
           >
             <ArrowLeft className="h-4 w-4" /> Back to Portfolio
           </Link>
-          <h1 className="font-[family-name:var(--font-heading)] mb-3 text-3xl font-bold text-white md:text-5xl">
+          <h1 className="font-[family-name:var(--font-heading)] mb-3 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
             {project.title}
           </h1>
           <div className="flex flex-wrap items-center gap-6 text-sm text-white/70">
@@ -82,20 +82,20 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       {/* Content */}
-      <section className="bg-white py-20">
+      <section className="bg-dark py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
             {/* Main Content */}
             <div className="lg:col-span-2">
               <ScrollReveal>
-                <h2 className="font-[family-name:var(--font-heading)] mb-4 text-2xl font-bold text-dark">
+                <h2 className="font-[family-name:var(--font-heading)] mb-4 text-2xl font-bold text-white">
                   Project Overview
                 </h2>
                 <div className="section-divider mb-6" />
-                <p className="mb-8 text-lg leading-relaxed text-gray-600">
+                <p className="mb-8 text-lg leading-relaxed text-white/70">
                   {project.description}
                 </p>
-                <p className="mb-10 leading-relaxed text-gray-600">
+                <p className="mb-10 leading-relaxed text-white/60">
                   {project.details}
                 </p>
               </ScrollReveal>
@@ -103,7 +103,7 @@ export default async function ProjectPage({ params }: Props) {
               {/* Gallery */}
               {project.images.length > 1 && (
                 <ScrollReveal>
-                  <h3 className="font-[family-name:var(--font-heading)] mb-6 text-xl font-bold text-dark">
+                  <h3 className="font-[family-name:var(--font-heading)] mb-6 text-xl font-bold text-white">
                     Project Gallery
                   </h3>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -137,8 +137,8 @@ export default async function ProjectPage({ params }: Props) {
             {/* Sidebar */}
             <div>
               <ScrollReveal direction="right">
-                <div className="sticky top-28 overflow-hidden rounded-xl border border-gray-100 bg-light">
-                  <div className="bg-primary p-6">
+                <div className="sticky top-28 overflow-hidden rounded-xl border border-white/10 bg-primary">
+                  <div className="border-b border-white/10 p-6">
                     <h3 className="font-[family-name:var(--font-heading)] text-lg font-bold text-white">
                       Scope of Work
                     </h3>
@@ -148,14 +148,14 @@ export default async function ProjectPage({ params }: Props) {
                       {project.scope.map((item, i) => (
                         <li
                           key={i}
-                          className="flex items-start gap-3 text-sm text-gray-600"
+                          className="flex items-start gap-3 text-sm text-white/60"
                         >
                           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                           {item}
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-8 border-t border-gray-200 pt-6">
+                    <div className="mt-8 border-t border-white/10 pt-6">
                       <Link
                         href="/contact"
                         className="btn-interact block w-full rounded bg-accent px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-accent-dark"
@@ -172,20 +172,20 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       {/* Prev/Next Navigation */}
-      <section className="border-t border-gray-200 bg-light">
+      <section className="border-t border-white/10 bg-primary">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-2">
             {prev ? (
               <Link
                 href={`/portfolio/${prev.slug}`}
-                className="group flex items-center gap-4 border-r border-gray-200 py-8 pr-6 transition-colors hover:bg-white"
+                className="group flex items-center gap-4 border-r border-white/10 py-8 pr-6 transition-colors hover:bg-dark"
               >
-                <ArrowLeft className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-hover:-translate-x-1 group-hover:text-accent" />
+                <ArrowLeft className="h-5 w-5 shrink-0 text-white/40 transition-transform group-hover:-translate-x-1 group-hover:text-accent" />
                 <div className="min-w-0">
-                  <p className="text-xs tracking-wider text-gray-400 uppercase">
+                  <p className="text-xs tracking-wider text-white/40 uppercase">
                     Previous
                   </p>
-                  <p className="truncate text-sm font-semibold text-dark group-hover:text-accent">
+                  <p className="truncate text-sm font-semibold text-white group-hover:text-accent">
                     {prev.title}
                   </p>
                 </div>
@@ -196,17 +196,17 @@ export default async function ProjectPage({ params }: Props) {
             {next ? (
               <Link
                 href={`/portfolio/${next.slug}`}
-                className="group flex items-center justify-end gap-4 py-8 pl-6 text-right transition-colors hover:bg-white"
+                className="group flex items-center justify-end gap-4 py-8 pl-6 text-right transition-colors hover:bg-dark"
               >
                 <div className="min-w-0">
-                  <p className="text-xs tracking-wider text-gray-400 uppercase">
+                  <p className="text-xs tracking-wider text-white/40 uppercase">
                     Next
                   </p>
-                  <p className="truncate text-sm font-semibold text-dark group-hover:text-accent">
+                  <p className="truncate text-sm font-semibold text-white group-hover:text-accent">
                     {next.title}
                   </p>
                 </div>
-                <ArrowRight className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-hover:translate-x-1 group-hover:text-accent" />
+                <ArrowRight className="h-5 w-5 shrink-0 text-white/40 transition-transform group-hover:translate-x-1 group-hover:text-accent" />
               </Link>
             ) : (
               <div />

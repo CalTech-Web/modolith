@@ -3,13 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
-import {
-  ArrowRight,
-  Shield,
-  Target,
-  Users,
-  Zap,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
@@ -53,29 +47,6 @@ const timeline = [
   },
 ];
 
-const values = [
-  {
-    icon: Shield,
-    title: "Safety",
-    description: "Rigorous protocols protecting workers, property, and build integrity.",
-  },
-  {
-    icon: Target,
-    title: "Precision",
-    description: "Expert execution with accuracy and attention to detail on every project.",
-  },
-  {
-    icon: Users,
-    title: "Collaboration",
-    description: "Close partnership with clients, engineers, and architects at every stage.",
-  },
-  {
-    icon: Zap,
-    title: "Innovation",
-    description: "Modern techniques and technologies that keep projects efficient and effective.",
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
@@ -86,7 +57,7 @@ export default function AboutPage() {
       />
 
       {/* Our Company */}
-      <section className="bg-white py-24">
+      <section className="bg-dark py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
             <ScrollReveal direction="left">
@@ -94,24 +65,24 @@ export default function AboutPage() {
                 <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                   Our Company
                 </p>
-                <h2 className="font-[family-name:var(--font-heading)] mb-6 text-3xl font-bold text-dark md:text-4xl">
+                <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold text-white md:text-5xl">
                   More Than Building -
                   <br />
                   Creating Lasting Value
                 </h2>
                 <div className="section-divider mb-8" />
-                <p className="mb-6 leading-relaxed text-gray-600">
+                <p className="mb-6 leading-relaxed text-white/70">
                   At Modolith, we view construction as more than building - it&apos;s
                   about creating lasting value. We are committed to quality,
                   safety, and innovation, delivering robust structural solutions
                   that redefine what&apos;s achievable.
                 </p>
-                <p className="mb-6 leading-relaxed text-gray-600">
+                <p className="mb-6 leading-relaxed text-white/70">
                   Our services span structural steel erection, pre-engineered
                   metal building installation, general contracting, and
                   construction consulting - all built on skilled craftsmanship.
                 </p>
-                <p className="leading-relaxed text-gray-600">
+                <p className="leading-relaxed text-white/70">
                   Guided by dedication and accuracy, Modolith provides complete
                   construction solutions that fulfill expectations and deliver
                   lasting value to every project.
@@ -133,52 +104,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-light py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <ScrollReveal>
-            <div className="mx-auto mb-16 max-w-3xl text-center">
-              <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
-                Our Values
-              </p>
-              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-3xl font-bold text-dark md:text-4xl">
-                What Drives Us
-              </h2>
-              <div className="section-divider mx-auto" />
-            </div>
-          </ScrollReveal>
-          <ScrollReveal stagger>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {values.map((value) => (
-                <div
-                  key={value.title}
-                  className="card-hover rounded-xl bg-white p-8 text-center shadow-sm"
-                >
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
-                    <value.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <h3 className="font-[family-name:var(--font-heading)] mb-2 text-lg font-bold text-dark">
-                    {value.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-gray-600">
-                    {value.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Interactive Timeline */}
-      <section className="bg-white py-24">
+      <section className="bg-primary py-24">
         <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
             <div className="mx-auto max-w-3xl text-center">
               <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                 Our History
               </p>
-              <h2 className="font-[family-name:var(--font-heading)] mb-6 text-3xl font-bold text-dark md:text-4xl">
+              <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold text-white md:text-5xl">
                 Strong Structural Founding
               </h2>
               <div className="section-divider mx-auto mb-16" />
@@ -203,19 +137,19 @@ export default function AboutPage() {
                   }`}
                 >
                   <div className="flex-1">
-                    <div className="rounded-xl border border-gray-100 bg-white p-8 shadow-sm">
+                    <div className="rounded-xl border border-white/10 bg-dark p-8">
                       <div className="font-[family-name:var(--font-heading)] mb-2 text-3xl font-bold text-accent">
                         {item.year}
                       </div>
-                      <h3 className="mb-3 text-xl font-bold text-dark">
+                      <h3 className="mb-3 text-xl font-bold text-white">
                         {item.title}
                       </h3>
-                      <p className="text-gray-600">{item.description}</p>
+                      <p className="text-white/60">{item.description}</p>
                     </div>
                   </div>
                   {/* Dot on the line */}
                   <div className="absolute top-8 left-1/2 -translate-x-1/2 max-md:left-[-18px]">
-                    <div className="h-4 w-4 rounded-full border-4 border-accent bg-white" />
+                    <div className="h-4 w-4 rounded-full border-4 border-accent bg-dark" />
                   </div>
                   <div className="hidden flex-1 md:block" />
                 </div>
@@ -226,7 +160,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-primary py-24 text-white">
+      <section className="bg-dark py-24 text-white">
         <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal stagger>
             <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
@@ -263,14 +197,14 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="bg-white py-24">
+      <section className="bg-primary py-24">
         <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                 Our Team
               </p>
-              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-3xl font-bold text-dark md:text-4xl">
+              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-4xl font-bold text-white md:text-5xl">
                 Experience, Expertise, Excellence
               </h2>
               <div className="section-divider mx-auto" />
@@ -282,7 +216,7 @@ export default function AboutPage() {
               {team.map((member) => (
                 <div
                   key={member.name}
-                  className="card-hover group overflow-hidden rounded-xl bg-light"
+                  className="card-hover group overflow-hidden rounded-xl bg-dark"
                 >
                   <div className="img-zoom relative h-72 overflow-hidden">
                     <Image
@@ -301,7 +235,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                   <div className="border-b-3 border-transparent p-6 transition-colors group-hover:border-accent">
-                    <h3 className="font-[family-name:var(--font-heading)] text-xl font-bold text-dark">
+                    <h3 className="font-[family-name:var(--font-heading)] text-xl font-bold text-white">
                       {member.name}
                     </h3>
                     <p className="text-sm font-semibold text-accent">
@@ -327,7 +261,7 @@ export default function AboutPage() {
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
           <ScrollReveal>
-            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-3xl font-bold md:text-4xl">
+            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold md:text-5xl">
               Let&apos;s Build Something That Lasts
             </h2>
             <p className="mb-10 text-lg text-white/75">

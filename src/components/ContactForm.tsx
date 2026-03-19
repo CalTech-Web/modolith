@@ -54,13 +54,13 @@ export default function ContactForm() {
   if (status === "sent") {
     return (
       <div className="py-12 text-center">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-50">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
           <CheckCircle className="h-10 w-10 text-green-500" />
         </div>
-        <h3 className="font-[family-name:var(--font-heading)] mb-2 text-2xl font-bold">
+        <h3 className="font-[family-name:var(--font-heading)] mb-2 text-2xl font-bold text-white">
           Message Sent!
         </h3>
-        <p className="text-gray-600">
+        <p className="text-white/60">
           Thank you for reaching out. We&apos;ll get back to you shortly.
         </p>
       </div>
@@ -68,7 +68,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-dark transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20";
+    "w-full rounded-lg border border-white/10 bg-dark px-4 py-3 text-white placeholder-white/30 transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -76,7 +76,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="firstName"
-            className="mb-1.5 block text-sm font-semibold text-dark"
+            className="mb-1.5 block text-sm font-semibold text-white"
           >
             First Name
           </label>
@@ -92,7 +92,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="lastName"
-            className="mb-1.5 block text-sm font-semibold text-dark"
+            className="mb-1.5 block text-sm font-semibold text-white"
           >
             Last Name
           </label>
@@ -110,7 +110,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="mb-1.5 block text-sm font-semibold text-dark"
+            className="mb-1.5 block text-sm font-semibold text-white"
           >
             Email
           </label>
@@ -126,7 +126,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="phone"
-            className="mb-1.5 block text-sm font-semibold text-dark"
+            className="mb-1.5 block text-sm font-semibold text-white"
           >
             Phone
           </label>
@@ -142,7 +142,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="projectType"
-          className="mb-1.5 block text-sm font-semibold text-dark"
+          className="mb-1.5 block text-sm font-semibold text-white"
         >
           Project Type
         </label>
@@ -165,7 +165,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="mb-1.5 block text-sm font-semibold text-dark"
+          className="mb-1.5 block text-sm font-semibold text-white"
         >
           Message
         </label>
@@ -193,7 +193,7 @@ export default function ContactForm() {
         )}
       </button>
       {status === "error" && (
-        <p className="text-center text-sm font-semibold text-red-600">
+        <p className="text-center text-sm font-semibold text-red-400">
           Something went wrong. Please try again or call us at (832) 519-8584.
         </p>
       )}

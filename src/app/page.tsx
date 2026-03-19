@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
-import CounterSection from "@/components/CounterSection";
-import VideoSection from "@/components/VideoSection";
-import PartnerMarquee from "@/components/PartnerMarquee";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
 import {
@@ -23,6 +20,17 @@ export const metadata: Metadata = {
 };
 
 const serviceIcons = [Hammer, Building2, HardHat, ClipboardCheck];
+
+const partners = [
+  "Metco Engineering",
+  "Zachry Group",
+  "Varco Pruden",
+  "Brazosport College",
+  "Americus Holdings",
+  "Advon Construction",
+  "SSP Engineering",
+  "BP",
+];
 
 export default function Home() {
   return (
@@ -88,18 +96,18 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="bg-white py-24">
+      <section className="bg-dark py-24">
         <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                 What We Do
               </p>
-              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-3xl font-bold text-dark md:text-4xl">
+              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-4xl font-bold text-white md:text-5xl">
                 Our Services
               </h2>
               <div className="section-divider mx-auto mb-6" />
-              <p className="mx-auto max-w-2xl text-gray-600">
+              <p className="mx-auto max-w-2xl text-white/60">
                 At Modolith, we do more than construct buildings - we create
                 trust and deliver excellence.
               </p>
@@ -114,7 +122,7 @@ export default function Home() {
                   <Link
                     key={service.slug}
                     href={`/services#${service.slug}`}
-                    className="card-hover gold-border-top group overflow-hidden rounded-xl bg-light"
+                    className="card-hover gold-border-top group overflow-hidden rounded-xl bg-primary"
                   >
                     <div className="img-zoom relative h-52">
                       <Image
@@ -129,10 +137,10 @@ export default function Home() {
                       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
                         <Icon className="h-5 w-5 text-accent" />
                       </div>
-                      <h3 className="font-[family-name:var(--font-heading)] mb-2 text-lg font-bold text-dark transition-colors group-hover:text-accent">
+                      <h3 className="font-[family-name:var(--font-heading)] mb-2 text-lg font-bold text-white transition-colors group-hover:text-accent">
                         {service.shortTitle}
                       </h3>
-                      <p className="line-clamp-3 text-sm text-gray-600">
+                      <p className="line-clamp-3 text-sm text-white/60">
                         {service.description.split(".")[0]}.
                       </p>
                       <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-all group-hover:gap-2">
@@ -147,29 +155,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Counter Stats Section */}
-      <CounterSection />
+      {/* About Preview - Mission & Vision */}
+      <section className="bg-primary py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <ScrollReveal>
+            <div className="mb-16 text-center">
+              <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
+                Who We Are
+              </p>
+              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-4xl font-bold text-white md:text-5xl">
+                More Than Building -
+                <br />
+                Creating Lasting Value
+              </h2>
+              <div className="section-divider mx-auto mb-6" />
+              <p className="mx-auto max-w-3xl text-lg text-white/60">
+                At Modolith, we view construction as more than building - it&apos;s
+                about creating lasting value. We are committed to quality,
+                safety, and innovation, delivering robust structural solutions
+                that redefine what&apos;s achievable.
+              </p>
+            </div>
+          </ScrollReveal>
 
-      {/* Video Section */}
-      <VideoSection />
+          <ScrollReveal stagger>
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+              <div className="glass rounded-xl p-10">
+                <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
+                  Our Mission
+                </p>
+                <h3 className="font-[family-name:var(--font-heading)] mb-4 text-2xl font-bold text-white">
+                  Building Trust Through Excellence
+                </h3>
+                <p className="leading-relaxed text-white/70">
+                  Position ourselves as a trusted full-service construction firm
+                  by incorporating design, build, fabrication, and self-perform
+                  capabilities.
+                </p>
+              </div>
+              <div className="glass rounded-xl p-10">
+                <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
+                  Our Vision
+                </p>
+                <h3 className="font-[family-name:var(--font-heading)] mb-4 text-2xl font-bold text-white">
+                  Leading with Innovation
+                </h3>
+                <p className="leading-relaxed text-white/70">
+                  Lead the construction industry with innovation, expertise, and
+                  steadfast commitment, earning trust as a reliable partner who
+                  delivers outstanding results and fosters enduring client
+                  relationships.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <div className="mt-12 text-center">
+            <Link
+              href="/about"
+              className="btn-interact group inline-flex items-center gap-2 rounded border border-accent px-8 py-3.5 font-semibold text-accent transition-colors hover:bg-accent hover:text-white"
+            >
+              Learn More About Us
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Portfolio Preview */}
-      <section className="bg-light py-24">
+      <section className="bg-dark py-24">
         <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
                 Our Work
               </p>
-              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-3xl font-bold text-dark md:text-4xl">
+              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-4xl font-bold text-white md:text-5xl">
                 Delivering Excellence Across Every Build
               </h2>
               <div className="section-divider mx-auto" />
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 6).map((project, i) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {projects.slice(0, 8).map((project, i) => (
               <ScrollReveal key={project.slug} direction="scale">
                 <Link
                   href={`/portfolio/${project.slug}`}
@@ -181,7 +250,7 @@ export default function Home() {
                     alt={project.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -206,7 +275,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link
               href="/portfolio"
-              className="btn-interact group inline-flex items-center gap-2 rounded bg-primary px-8 py-3.5 font-semibold text-white transition-colors hover:bg-primary-light"
+              className="btn-interact group inline-flex items-center gap-2 rounded bg-accent px-8 py-3.5 font-semibold text-white transition-colors hover:bg-accent-dark"
             >
               View All Projects
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -215,28 +284,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partners Marquee */}
-      <PartnerMarquee />
-
-      {/* Brand Quote */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      {/* Partners */}
+      <section className="bg-primary py-20">
+        <div className="mx-auto max-w-7xl px-6">
           <ScrollReveal>
-            <div className="relative">
-              <span className="font-[family-name:var(--font-heading)] absolute -top-6 -left-2 text-6xl leading-none text-accent/20 md:-top-8 md:-left-6 md:text-8xl">
-                &ldquo;
-              </span>
-              <blockquote className="font-[family-name:var(--font-heading)] relative z-10 text-2xl leading-relaxed font-medium text-primary italic md:text-3xl lg:text-4xl">
-                Built to Last. Designed to Lead.
-              </blockquote>
-              <span className="font-[family-name:var(--font-heading)] absolute -right-2 -bottom-10 text-6xl leading-none text-accent/20 md:-right-6 md:-bottom-12 md:text-8xl">
-                &rdquo;
-              </span>
+            <div className="mb-12 text-center">
+              <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
+                Trusted By
+              </p>
+              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-4xl font-bold text-white md:text-5xl">
+                Our Partners
+              </h2>
+              <div className="section-divider mx-auto" />
             </div>
-            <div className="section-divider mx-auto mt-10" />
-            <p className="mt-6 text-sm tracking-widest text-gray-400 uppercase">
-              Modolith Structures
-            </p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+              {partners.map((name) => (
+                <span
+                  key={name}
+                  className="font-[family-name:var(--font-heading)] text-lg font-semibold tracking-wide text-white/40 transition-colors hover:text-accent md:text-xl"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -256,7 +328,7 @@ export default function Home() {
             <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
               Strategic. Reliable. Built to Perform.
             </p>
-            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-3xl font-bold md:text-4xl">
+            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold md:text-5xl">
               Let&apos;s Build Something That Lasts
             </h2>
             <p className="mb-10 text-lg text-white/75">
