@@ -13,24 +13,6 @@ export const metadata: Metadata = {
     "Standing Structures. Setting Standards. Expert structural steel erection, pre-engineered metal buildings, general contracting, and construction consulting in Houston, TX.",
 };
 
-const teamMembers = [
-  {
-    name: "Leandro Morales",
-    role: "Owner Operator",
-    image: "/images/services/Modolith-Image-108.jpg",
-  },
-  {
-    name: "Estevan Cantu",
-    role: "Field Operations",
-    image: "/images/services/Modolith-Image-107.jpg",
-  },
-  {
-    name: "Daniel Garcia",
-    role: "Quality Control & Safety",
-    image: "/images/services/Modolith-Image-110.jpg",
-  },
-];
-
 export default function Home() {
   return (
     <>
@@ -54,23 +36,23 @@ export default function Home() {
               </figure>
               <div className="about-caption">
                 <div className="section-number">.01</div>
-                <div className="section-subtitle">Get to know us</div>
-                <div className="section-title">About Company</div>
+                <div className="section-subtitle">About</div>
+                <div className="section-title">Strong Structural Founding</div>
                 <p>
-                  Modolith Structures is a Houston-based general contractor
-                  founded in 2021, specializing in structural steel erection,
-                  pre-engineered metal buildings, general contracting, and
-                  construction consulting.
+                  Guided by dedication and accuracy, Modolith provides complete
+                  construction solutions that fulfill expectations and deliver
+                  lasting value to every project.
                 </p>
                 <p>
-                  We view construction as more than building - it&apos;s about
-                  creating lasting value. We are committed to quality, safety,
-                  and innovation, delivering robust structural solutions.
+                  At Modolith, we view construction as more than building - it&apos;s
+                  about creating lasting value. We are committed to quality,
+                  safety, and innovation, delivering robust structural solutions
+                  that redefine what&apos;s achievable.
                 </p>
                 <div className="butn-dark">
                   <Link href="/about">
                     <span>
-                      Read more <ArrowRight className="inline h-4 w-4" />
+                      Learn More <ArrowRight className="inline h-4 w-4" />
                     </span>
                   </Link>
                 </div>
@@ -81,8 +63,21 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="mb-[90px]">
+      <section className="section-padding pt-0">
         <div className="mx-auto max-w-[1140px] px-4">
+          <ScrollReveal>
+            <div className="relative mb-[30px]">
+              <div className="section-number">.02</div>
+              <div className="section-subtitle">What We Do</div>
+              <div className="section-title">Services</div>
+              <p className="mt-4 max-w-3xl">
+                At Modolith, we don&apos;t just build structures - we build standards.
+                Known for delivering reliable construction solutions, our team is
+                committed to completing successful projects through careful planning
+                and skilled execution.
+              </p>
+            </div>
+          </ScrollReveal>
           <ScrollReveal>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
               {services.map((service) => (
@@ -114,11 +109,82 @@ export default function Home() {
         </div>
       </section>
 
+      {/* History / Mission / Vision */}
+      <section className="section-padding">
+        <div className="mx-auto max-w-[1140px] px-4">
+          <ScrollReveal>
+            <div className="asymmetric-section">
+              <figure>
+                <Image
+                  src="/images/services/Modolith-Image-107.jpg"
+                  alt="Modolith History"
+                  width={1200}
+                  height={800}
+                  className="h-auto w-full"
+                  sizes="(max-width: 991px) 100vw, 66vw"
+                />
+              </figure>
+              <div className="asymmetric-caption">
+                <div className="section-number">.03</div>
+                <div className="section-subtitle">Since 2021</div>
+                <div className="section-title">Our Story</div>
+                <p>
+                  Founded in 2021, Modolith began as a construction consulting
+                  firm specializing in risk management and quality control for
+                  commercial projects. Over the years, we have solidified
+                  relationships with existing clients to strategically grow into
+                  a full service firm. In 2023, we expanded our scope to include
+                  self-performing structural steel and metal buildings,
+                  positioning ourselves as a multi faceted company.
+                </p>
+                <div className="butn-dark">
+                  <Link href="/about">
+                    <span>
+                      Read more <ArrowRight className="inline h-4 w-4" />
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Mission & Vision Cards */}
+      <section className="section-padding pt-0">
+        <div className="mx-auto max-w-[1140px] px-4">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="border border-primary-light p-10">
+                <div className="section-subtitle mb-4">Our Mission</div>
+                <p>
+                  At Modolith, our mission is to position ourselves as a trusted
+                  full service construction firm by incorporating design, build,
+                  fabrication, and self perform capabilities. We strive to be more
+                  than just a service provider; we aim to be a valued partner to
+                  our clients, ensuring their visions are realized with precision
+                  and care.
+                </p>
+              </div>
+              <div className="border border-primary-light p-10">
+                <div className="section-subtitle mb-4">Our Vision</div>
+                <p>
+                  To lead the construction industry with innovation, expertise,
+                  and steadfast commitment, earning trust as a reliable partner
+                  who delivers outstanding results and fosters enduring client
+                  relationships.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section className="section-padding">
         <div className="mx-auto max-w-[1140px] px-4">
           <div className="relative mb-[30px]">
-            <div className="section-number">.03</div>
+            <div className="section-number">.04</div>
             <div className="section-subtitle">Portfolio</div>
             <div className="section-title">Our Projects</div>
           </div>
@@ -164,35 +230,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Project - Asymmetric layout (reversed) */}
+      {/* CTA - Let's Build Something That Lasts */}
       <section className="section-padding">
         <div className="mx-auto max-w-[1140px] px-4">
           <ScrollReveal>
-            <div className="asymmetric-section">
+            <div className="about-section">
               <figure>
                 <Image
                   src="/images/projects/brazoria-county/BCSC-Image-112.jpg"
-                  alt="Featured Project"
+                  alt="Let's Build Something That Lasts"
                   width={1200}
                   height={800}
                   className="h-auto w-full"
                   sizes="(max-width: 991px) 100vw, 66vw"
                 />
               </figure>
-              <div className="asymmetric-caption">
-                <div className="section-number">.04</div>
-                <div className="section-subtitle">Take a look at our</div>
-                <div className="section-title">Recent Project</div>
+              <div className="about-caption">
+                <div className="section-number">.05</div>
+                <div className="section-subtitle">Strategic. Reliable. Built to Perform.</div>
+                <div className="section-title">
+                  Let&apos;s Build Something That Lasts
+                </div>
                 <p>
-                  Modolith provided dual services combining project management
-                  consulting with hands-on construction for Brazoria County
-                  Service Centers, seamlessly integrating consulting and
-                  construction services.
+                  Whether you&apos;re planning a complex steel structure or seeking
+                  expert guidance for your next project, Modolith is here to
+                  deliver. Our team combines skilled construction with insightful
+                  consultation to ensure every project meets top standards.
+                  Partner with us to bring your vision to life.
                 </p>
                 <div className="butn-dark">
-                  <Link href="/portfolio/brazoria-county-service-centers">
+                  <Link href="/contact">
                     <span>
-                      See project <ArrowRight className="inline h-4 w-4" />
+                      Contact Us <ArrowRight className="inline h-4 w-4" />
                     </span>
                   </Link>
                 </div>
@@ -202,35 +271,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Collaboration Section */}
       <section className="section-padding">
-        <div className="mx-auto max-w-[1140px] px-4">
-          <div className="relative mb-[30px] text-center">
-            <div className="section-number">.05</div>
-            <div className="section-subtitle">Our Experts</div>
-            <div className="section-title">Leadership Team</div>
-          </div>
-
+        <div className="mx-auto max-w-[1140px] px-4 text-center">
           <ScrollReveal>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {teamMembers.map((member) => (
-                <div key={member.name} className="team-card">
-                  <div className="relative overflow-hidden">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={600}
-                      height={700}
-                      className="h-auto w-full"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-                  <div className="team-info">
-                    <h5>{member.name}</h5>
-                    <p>{member.role}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="section-number mx-auto">.06</div>
+            <div className="section-subtitle">Collaboration</div>
+            <div className="section-title mb-6">Let&apos;s work together.</div>
+            <p className="mx-auto mb-10 max-w-2xl">
+              Your vision is the blueprint - Modolith is here to bring it to
+              life. Whether it&apos;s structural steel erection, general
+              contracting, or pre-engineered metal building solutions, our team
+              is ready to support your project from concept to completion.
+            </p>
+            <div className="butn-dark">
+              <Link href="/contact">
+                <span>
+                  Let&apos;s Talk <ArrowRight className="inline h-4 w-4" />
+                </span>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
