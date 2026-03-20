@@ -155,7 +155,15 @@ export default function Home() {
         <div className="mx-auto max-w-[1140px] px-4">
           <ScrollReveal>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="border border-primary-light p-10">
+              <div className="relative overflow-hidden border border-primary-light p-10">
+                {/* Background icon */}
+                <svg
+                  className="absolute -right-4 -bottom-4 h-40 w-40 text-accent opacity-[0.07]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
                 <div className="section-subtitle mb-4">Our Mission</div>
                 <p>
                   At Modolith, our mission is to position ourselves as a trusted
@@ -166,7 +174,16 @@ export default function Home() {
                   and care.
                 </p>
               </div>
-              <div className="border border-primary-light p-10">
+              <div className="relative overflow-hidden border border-primary-light p-10">
+                {/* Background icon */}
+                <svg
+                  className="absolute -right-4 -bottom-4 h-40 w-40 text-accent opacity-[0.07]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                </svg>
                 <div className="section-subtitle mb-4">Our Vision</div>
                 <p>
                   To lead the construction industry with innovation, expertise,
