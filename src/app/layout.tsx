@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Oswald, Didact_Gothic } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import ContentLines from "@/components/ContentLines";
 
-const inter = Inter({
-  variable: "--font-inter",
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const didactGothic = Didact_Gothic({
+  variable: "--font-didact",
   subsets: ["latin"],
   display: "swap",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -120,10 +123,13 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${montserrat.variable} antialiased`}
+        className={`${oswald.variable} ${didactGothic.variable} antialiased`}
       >
         <Navbar />
-        <main>{children}</main>
+        <div className="content-wrapper">
+          <ContentLines />
+          <main>{children}</main>
+        </div>
         <Footer />
         <BackToTop />
       </body>

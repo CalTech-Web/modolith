@@ -32,163 +32,130 @@ const team = [
   },
 ];
 
-const timeline = [
-  {
-    year: "2021",
-    title: "Founded",
-    description:
-      "Modolith was established as a construction consulting firm specializing in risk management and quality control, laying the groundwork for our commitment to construction excellence.",
-  },
-  {
-    year: "2023",
-    title: "Expansion",
-    description:
-      "Added self-performing structural steel and metal building capabilities, becoming a full-service construction firm with design, build, fabrication, and self-perform capabilities.",
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="About Modolith"
-        subtitle="With a commitment to quality and excellence, Modolith focuses on providing enduring value to clients through expert construction solutions."
+        title="About Us"
+        subtitle="Get to Know Us"
         image="/images/services/Modolith-Image-102-1024x1024.jpg"
       />
 
-      {/* Our Company */}
-      <section className="bg-dark py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-            <ScrollReveal direction="left">
-              <div>
-                <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
-                  Our Company
+      {/* About Company - Asymmetric layout */}
+      <section className="section-padding">
+        <div className="mx-auto max-w-[1140px] px-4">
+          <ScrollReveal>
+            <div className="about-section">
+              <figure>
+                <Image
+                  src="/images/projects/fort-bend-skills-tower/DJI_0502.jpg"
+                  alt="Modolith Construction"
+                  width={1200}
+                  height={800}
+                  className="h-auto w-full"
+                  sizes="(max-width: 991px) 100vw, 66vw"
+                />
+              </figure>
+              <div className="about-caption">
+                <div className="section-number">.01</div>
+                <div className="section-subtitle">Our Company</div>
+                <div className="section-title">About Modolith</div>
+                <p>
+                  At Modolith, we view construction as more than building -
+                  it&apos;s about creating lasting value. We are committed to
+                  quality, safety, and innovation, delivering robust structural
+                  solutions that redefine what&apos;s achievable.
                 </p>
-                <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold text-white md:text-5xl">
-                  More Than Building -
-                  <br />
-                  Creating Lasting Value
-                </h2>
-                <div className="section-divider mb-8" />
-                <p className="mb-6 leading-relaxed text-white/70">
-                  At Modolith, we view construction as more than building - it&apos;s
-                  about creating lasting value. We are committed to quality,
-                  safety, and innovation, delivering robust structural solutions
-                  that redefine what&apos;s achievable.
-                </p>
-                <p className="mb-6 leading-relaxed text-white/70">
+                <p>
                   Our services span structural steel erection, pre-engineered
                   metal building installation, general contracting, and
                   construction consulting - all built on skilled craftsmanship.
                 </p>
-                <p className="leading-relaxed text-white/70">
-                  Guided by dedication and accuracy, Modolith provides complete
-                  construction solutions that fulfill expectations and deliver
-                  lasting value to every project.
-                </p>
+                <div className="butn-dark">
+                  <Link href="/services">
+                    <span>
+                      Our services <ArrowRight className="inline h-4 w-4" />
+                    </span>
+                  </Link>
+                </div>
               </div>
-            </ScrollReveal>
-            <ScrollReveal direction="right">
-              <div className="relative h-[450px] overflow-hidden rounded-xl">
-                <Image
-                  src="/images/projects/fort-bend-skills-tower/DJI_0502.jpg"
-                  alt="Modolith Construction"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Interactive Timeline */}
-      <section className="bg-primary py-24">
-        <div className="mx-auto max-w-7xl px-6">
+      {/* History - Asymmetric reversed */}
+      <section className="section-padding">
+        <div className="mx-auto max-w-[1140px] px-4">
           <ScrollReveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
-                Our History
-              </p>
-              <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold text-white md:text-5xl">
-                Strong Structural Founding
-              </h2>
-              <div className="section-divider mx-auto mb-16" />
+            <div className="asymmetric-section">
+              <figure>
+                <Image
+                  src="/images/projects/brazoria-county/BCSC-Image-112.jpg"
+                  alt="Company History"
+                  width={1200}
+                  height={800}
+                  className="h-auto w-full"
+                  sizes="(max-width: 991px) 100vw, 66vw"
+                />
+              </figure>
+              <div className="asymmetric-caption">
+                <div className="section-number">.02</div>
+                <div className="section-subtitle">Our History</div>
+                <div className="section-title">Strong Founding</div>
+                <p>
+                  Founded in 2021, Modolith was established as a construction
+                  consulting firm specializing in risk management and quality
+                  control, laying the groundwork for our commitment to
+                  construction excellence.
+                </p>
+                <p>
+                  In 2023, we added self-performing structural steel and metal
+                  building capabilities, becoming a full-service construction
+                  firm with design, build, fabrication, and self-perform
+                  capabilities.
+                </p>
+              </div>
             </div>
           </ScrollReveal>
-
-          {/* Vertical timeline */}
-          <div className="relative mx-auto max-w-3xl">
-            {/* Gold timeline line */}
-            <div className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-accent/30 max-md:left-6" />
-
-            {timeline.map((item, i) => (
-              <ScrollReveal
-                key={item.year}
-                direction={i % 2 === 0 ? "left" : "right"}
-              >
-                <div
-                  className={`relative mb-12 flex items-start gap-8 last:mb-0 max-md:ml-12 ${
-                    i % 2 === 0
-                      ? "md:flex-row md:text-right"
-                      : "md:flex-row-reverse md:text-left"
-                  }`}
-                >
-                  <div className="flex-1">
-                    <div className="rounded-xl border border-white/10 bg-dark p-8">
-                      <div className="font-[family-name:var(--font-heading)] mb-2 text-3xl font-bold text-accent">
-                        {item.year}
-                      </div>
-                      <h3 className="mb-3 text-xl font-bold text-white">
-                        {item.title}
-                      </h3>
-                      <p className="text-white/60">{item.description}</p>
-                    </div>
-                  </div>
-                  {/* Dot on the line */}
-                  <div className="absolute top-8 left-1/2 -translate-x-1/2 max-md:left-[-18px]">
-                    <div className="h-4 w-4 rounded-full border-4 border-accent bg-dark" />
-                  </div>
-                  <div className="hidden flex-1 md:block" />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-dark py-24 text-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <ScrollReveal stagger>
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-              <div className="glass rounded-xl p-10">
-                <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
-                  Our Mission
-                </p>
-                <h3 className="font-[family-name:var(--font-heading)] mb-4 text-2xl font-bold">
+      <section className="section-padding">
+        <div className="mx-auto max-w-[1140px] px-4">
+          <div className="relative mb-[30px] text-center">
+            <div className="section-number">.03</div>
+            <div className="section-subtitle">What Drives Us</div>
+            <div className="section-title">Mission & Vision</div>
+          </div>
+
+          <ScrollReveal>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="border border-primary-light p-10">
+                <div className="section-subtitle mb-4">Our Mission</div>
+                <h3 className="mb-4 text-[24px] font-normal uppercase tracking-[1px] text-white"
+                  style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
+                >
                   Building Trust Through Excellence
                 </h3>
-                <p className="leading-relaxed text-white/70">
+                <p>
                   Position ourselves as a trusted full-service construction firm
                   by incorporating design, build, fabrication, and self-perform
                   capabilities.
                 </p>
               </div>
-              <div className="glass rounded-xl p-10">
-                <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
-                  Our Vision
-                </p>
-                <h3 className="font-[family-name:var(--font-heading)] mb-4 text-2xl font-bold">
+              <div className="border border-primary-light p-10">
+                <div className="section-subtitle mb-4">Our Vision</div>
+                <h3 className="mb-4 text-[24px] font-normal uppercase tracking-[1px] text-white"
+                  style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
+                >
                   Leading with Innovation
                 </h3>
-                <p className="leading-relaxed text-white/70">
+                <p>
                   Lead the construction industry with innovation, expertise, and
                   steadfast commitment, earning trust as a reliable partner who
-                  delivers outstanding results and fosters enduring client
-                  relationships.
+                  delivers outstanding results.
                 </p>
               </div>
             </div>
@@ -197,83 +164,35 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="bg-primary py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <ScrollReveal>
-            <div className="mb-16 text-center">
-              <p className="mb-3 text-sm font-semibold tracking-widest text-accent uppercase">
-                Our Team
-              </p>
-              <h2 className="font-[family-name:var(--font-heading)] mb-4 text-4xl font-bold text-white md:text-5xl">
-                Experience, Expertise, Excellence
-              </h2>
-              <div className="section-divider mx-auto" />
-            </div>
-          </ScrollReveal>
+      <section className="section-padding">
+        <div className="mx-auto max-w-[1140px] px-4">
+          <div className="relative mb-[30px] text-center">
+            <div className="section-number">.04</div>
+            <div className="section-subtitle">Our Experts</div>
+            <div className="section-title">Leadership Team</div>
+          </div>
 
-          <ScrollReveal stagger>
+          <ScrollReveal>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {team.map((member) => (
-                <div
-                  key={member.name}
-                  className="card-hover group overflow-hidden rounded-xl bg-dark"
-                >
-                  <div className="img-zoom relative h-72 overflow-hidden">
+                <div key={member.name} className="team-card">
+                  <div className="relative overflow-hidden">
                     <Image
                       src={member.image}
                       alt={member.name}
-                      fill
-                      className="object-cover"
+                      width={600}
+                      height={700}
+                      className="h-auto w-full"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    {/* Hover overlay with bio */}
-                    <div className="absolute inset-0 flex items-end bg-primary/80 p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <p className="text-sm leading-relaxed text-white/90">
-                        {member.bio}
-                      </p>
-                    </div>
                   </div>
-                  <div className="border-b-3 border-transparent p-6 transition-colors group-hover:border-accent">
-                    <h3 className="font-[family-name:var(--font-heading)] text-xl font-bold text-white">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm font-semibold text-accent">
-                      {member.title}
-                    </p>
+                  <div className="team-info">
+                    <h5>{member.name}</h5>
+                    <p>{member.title}</p>
                   </div>
                 </div>
               ))}
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative overflow-hidden py-24">
-        <Image
-          src="/images/projects/colorado-millwork/Millwork-Project-Image-103.jpg"
-          alt="Construction"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="hero-overlay absolute inset-0" />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
-          <ScrollReveal>
-            <h2 className="font-[family-name:var(--font-heading)] mb-6 text-4xl font-bold md:text-5xl">
-              Let&apos;s Build Something That Lasts
-            </h2>
-            <p className="mb-10 text-lg text-white/75">
-              Whether you&apos;re planning a complex steel structure or seeking
-              expert guidance for your next project, Modolith is here to deliver.
-            </p>
-            <Link
-              href="/contact"
-              className="btn-interact group inline-flex items-center gap-2 rounded bg-accent px-10 py-4 text-lg font-semibold text-white transition-colors hover:bg-accent-dark"
-            >
-              Contact Us <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Link>
           </ScrollReveal>
         </div>
       </section>
