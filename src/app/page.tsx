@@ -135,9 +135,8 @@ export default function Home() {
                     <Image
                       src={project.image}
                       alt={project.title}
-                      width={600}
-                      height={400}
-                      className="h-auto w-full"
+                      fill
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
