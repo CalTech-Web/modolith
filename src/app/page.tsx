@@ -289,13 +289,27 @@ export default function Home() {
       </section>
 
       {/* Collaboration Section */}
-      <section className="section-padding">
-        <div className="mx-auto max-w-[1140px] px-4 text-center">
+      <section className="relative overflow-hidden py-32">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/services/Modolith-Image-110.jpg"
+            alt="Collaboration"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1140px] px-4 text-center">
           <ScrollReveal>
-            <div className="section-number mx-auto">.06</div>
             <div className="section-subtitle">Collaboration</div>
-            <div className="section-title mb-6">Let&apos;s work together.</div>
-            <p className="mx-auto mb-10 max-w-2xl">
+            <h2
+              className="mx-auto mb-6 max-w-3xl text-[48px] font-500 uppercase leading-tight tracking-[3px] text-white md:text-[60px]"
+              style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
+            >
+              Let&apos;s work together.
+            </h2>
+            <p className="mx-auto mb-10 max-w-2xl text-[16px] leading-relaxed text-white/70">
               Your vision is the blueprint - Modolith is here to bring it to
               life. Whether it&apos;s structural steel erection, general
               contracting, or pre-engineered metal building solutions, our team

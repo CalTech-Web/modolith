@@ -7,10 +7,19 @@ export default function Footer() {
     <footer className="main-footer">
       <div className="mx-auto max-w-[1140px] px-4">
         {/* CTA Section */}
-        <div className="py-16 text-center">
-          <div className="section-subtitle">Let&apos;s Talk</div>
-          <div className="section-title">About your next project.</div>
-          <div className="butn-dark mt-8 mb-8">
+        <div className="py-20 text-center">
+          <div className="section-subtitle mb-2">Let&apos;s Talk</div>
+          <h2
+            className="mb-4 text-[42px] font-500 uppercase leading-tight tracking-[3px] text-white md:text-[52px]"
+            style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
+          >
+            About your next project.
+          </h2>
+          <p className="mx-auto mb-8 max-w-xl text-gray-warm">
+            Ready to start building? We&apos;d love to hear about your project
+            and explore how Modolith can deliver.
+          </p>
+          <div className="butn-dark">
             <Link href="/contact">
               <span>
                 Get in touch <ArrowRight className="inline h-4 w-4" />
