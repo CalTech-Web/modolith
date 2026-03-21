@@ -17,6 +17,7 @@ export default function PageHero({ title, subtitle, image }: PageHeroProps) {
         priority
         sizes="100vw"
       />
+      <div className="absolute inset-0 z-[1] bg-black/65" />
       <div className="relative z-10 text-center px-4">
         {subtitle && (
           <h6 className="animate-fade-in-up">{subtitle}</h6>

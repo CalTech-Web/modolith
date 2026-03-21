@@ -229,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 
@@ -659,8 +659,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ======= Page Header / Banner ======= */
 .banner-header {
-  height: 50vh;
-  min-height: 360px;
+  height: 600px;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -670,12 +669,6 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
-.banner-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
 
 .banner-header h6 {
   font-weight: 300;
