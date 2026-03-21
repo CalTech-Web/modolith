@@ -64,8 +64,8 @@ export const metadata: Metadata = {
     images: ["/images/services/Modolith-Image-108.jpg"],
   },
   icons: {
-    icon: "/images/logos/modolith-reduced-logo.png",
-    apple: "/images/logos/modolith-reduced-logo.png",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
@@ -125,10 +125,16 @@ export default function RootLayout({
       <body
         className={`${oswald.variable} ${didactGothic.variable} antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         <Navbar />
         <div className="content-wrapper">
           <ContentLines />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
         </div>
         <Footer />
         <BackToTop />

@@ -103,13 +103,6 @@ export default function Footer() {
             {/* Links */}
             <div className="md:text-right">
               <p className="mb-0">
-                <Link
-                  href="/contact"
-                  className="transition-colors hover:text-accent"
-                >
-                  Privacy Policy
-                </Link>
-                <span className="mx-2 text-white/10">|</span>
                 Built by{" "}
                 <a
                   href="https://caltechweb.com/"
