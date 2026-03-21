@@ -54,7 +54,7 @@ export default async function ProjectPage({ params }: Props) {
       <div className="mx-auto max-w-[1140px] px-4">
         <div className="relative z-[2] -mt-[30px] mb-[30px] bg-primary-light px-[45px] py-[30px]">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div>
+            <div className="border-l-2 border-accent pl-4">
               <h5 className="mb-1 text-[15px] font-light uppercase tracking-[3px] text-white"
                 style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
               >
@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: Props) {
               </h5>
               <p className="mb-0 text-gray-warm">{project.location}</p>
             </div>
-            <div>
+            <div className="border-l-2 border-accent pl-4">
               <h5 className="mb-1 text-[15px] font-light uppercase tracking-[3px] text-white"
                 style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
               >
@@ -70,7 +70,7 @@ export default async function ProjectPage({ params }: Props) {
               </h5>
               <p className="mb-0 text-gray-warm">{project.client}</p>
             </div>
-            <div>
+            <div className="border-l-2 border-accent pl-4">
               <h5 className="mb-1 text-[15px] font-light uppercase tracking-[3px] text-white"
                 style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
               >
@@ -132,7 +132,7 @@ export default async function ProjectPage({ params }: Props) {
             {/* Sidebar */}
             <div>
               <ScrollReveal direction="right">
-                <div className="sticky top-28 border border-primary-light bg-primary p-8">
+                <div className="sticky top-28 border border-primary-light border-t-2 border-t-accent bg-primary p-8">
                   <div className="section-subtitle mb-4">Scope of Work</div>
                   <ul className="mb-6 space-y-3">
                     {project.scope.map((item, i) => (

@@ -32,8 +32,8 @@ export default function ContactPage() {
                   here to deliver. Contact us today to begin.
                 </p>
 
-                <div className="space-y-6">
-                  <div>
+                <div className="space-y-4">
+                  <div className="border-l-2 border-accent bg-primary-light px-6 py-5">
                     <h6 className="mb-2 text-[14px] font-light uppercase tracking-[3px] text-white"
                       style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
                     >
@@ -50,7 +50,7 @@ export default function ContactPage() {
                       </a>
                     </p>
                   </div>
-                  <div>
+                  <div className="border-l-2 border-accent bg-primary-light px-6 py-5">
                     <h6 className="mb-2 text-[14px] font-light uppercase tracking-[3px] text-white"
                       style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
                     >
@@ -65,7 +65,7 @@ export default function ContactPage() {
                       </a>
                     </p>
                   </div>
-                  <div>
+                  <div className="border-l-2 border-accent bg-primary-light px-6 py-5">
                     <h6 className="mb-2 text-[14px] font-light uppercase tracking-[3px] text-white"
                       style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
                     >
@@ -80,7 +80,7 @@ export default function ContactPage() {
                       </a>
                     </p>
                   </div>
-                  <div>
+                  <div className="border-l-2 border-accent bg-primary-light px-6 py-5">
                     <h6 className="mb-2 text-[14px] font-light uppercase tracking-[3px] text-white"
                       style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
                     >
@@ -94,7 +94,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <ScrollReveal direction="right">
-              <div className="contact-form">
+              <div className="contact-form border border-primary-light p-8">
                 <div className="section-subtitle mb-4">Send a Message</div>
                 <ContactForm />
               </div>

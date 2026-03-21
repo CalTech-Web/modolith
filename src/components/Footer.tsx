@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Info */}
-        <div className="mb-16 text-center">
+        <div className="mb-16 border-t border-primary-light pt-16 text-center">
           <div className="section-subtitle">Contact Info</div>
           <p className="mb-0">
             1500 Waugh Dr. Suite 110, Houston, TX 77019
@@ -110,7 +110,7 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
                 <span className="mx-2 text-white/10">|</span>
-                Web Design by{" "}
+                Built by{" "}
                 <a
                   href="https://caltechweb.com/"
                   target="_blank"

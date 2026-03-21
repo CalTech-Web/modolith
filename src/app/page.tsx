@@ -342,7 +342,7 @@ export default function Home() {
           <ScrollReveal>
             <div className="section-subtitle">Built on Trust. Strengthened by Collaboration.</div>
             <div className="section-title mb-16">Clients &amp; Partners</div>
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {[
                 "Metco Engineering",
                 "Zachry Group",
@@ -356,7 +356,7 @@ export default function Home() {
               ].map((partner) => (
                 <div
                   key={partner}
-                  className="flex items-center justify-center border border-primary-light px-4 py-8 text-[14px] font-500 uppercase tracking-[2px] text-gray-warm transition-colors hover:border-accent hover:text-white"
+                  className="flex aspect-square items-center justify-center border border-primary-light p-4 text-center text-[13px] font-500 uppercase leading-tight tracking-[2px] text-gray-warm transition-colors hover:border-accent hover:text-white"
                   style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
                 >
                   {partner}

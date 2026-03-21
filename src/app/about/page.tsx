@@ -132,7 +132,7 @@ export default function AboutPage() {
 
           <ScrollReveal>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="border border-primary-light p-10">
+              <div className="border border-primary-light border-t-2 border-t-accent p-10 transition-colors hover:bg-primary-light">
                 <div className="section-subtitle mb-4">Our Mission</div>
                 <h3 className="mb-4 text-[24px] font-normal uppercase tracking-[1px] text-white"
                   style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
@@ -145,7 +145,7 @@ export default function AboutPage() {
                   capabilities.
                 </p>
               </div>
-              <div className="border border-primary-light p-10">
+              <div className="border border-primary-light border-t-2 border-t-accent p-10 transition-colors hover:bg-primary-light">
                 <div className="section-subtitle mb-4">Our Vision</div>
                 <h3 className="mb-4 text-[24px] font-normal uppercase tracking-[1px] text-white"
                   style={{ fontFamily: "var(--font-heading), 'Oswald', sans-serif" }}
@@ -188,7 +188,7 @@ export default function AboutPage() {
                   </div>
                   <div className="team-info">
                     <h5>{member.name}</h5>
-                    <p>{member.title}</p>
+                    <p className="text-accent">{member.title}</p>
                   </div>
                 </div>
               ))}
